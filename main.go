@@ -45,7 +45,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
       fmt.Println(err)
       break
     }
-    fmt.Printf("%#v", inMessage)
+    fmt.Printf("%#v\n", inMessage)
 
     switch inMessage.Name {
     case "channel add":
@@ -67,7 +67,7 @@ func addChannel(data interface{}) error {
   var channel Channel
   err := mapstructure.Decode(data, &channel)
   if err != nil {
-    return nil
+    return err
   }
   channel.Id = "1"
   fmt.Println("added channel")
